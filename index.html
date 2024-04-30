@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Binary Converter</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+  }
+
+  h1 {
+    color: #333;
+  }
+
+  .container {
+    margin-top: 50px;
+  }
+
+  input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+
+  #output {
+    margin-top: 20px;
+    font-size: 18px;
+  }
+
+  .animation {
+    animation: slideIn 0.5s ease;
+  }
+
+  @keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+</head>
+<body>
+<h1>Binary Converter</h1>
+<div class="container">
+  <input type="text" id="input" placeholder="Enter binary or text">
+  <br>
+  <button onclick="convert()">Convert</button>
+  <br>
+  <div id="output"></div>
+</div>
+
+<script>
+function convert() {
+  var input = document.getElementById('input').value.trim();
+  var output = document.getElementById('output');
+  var convertedText = '';
+
+  // Check if input is binary or text
+  if (/^[01\s]+$/.test(input)) {
+    // Convert binary to text
+    var words = input.split(' ');
+    for (var i = 0; i < words.length; i++) {
+      var charCode = parseInt(words[i], 2);
+      convertedText += String.fromCharCode(charCode);
+    }
+  } else {
+    // Convert text to binary
+    for (var i = 0; i < input.length; i++) {
+      var binaryChar = input[i].charCodeAt(0).toString(2);
+      convertedText += binaryChar.padStart(8, '0') + ' ';
+    }
+  }
+
+  // Display the result with animation
+  output.innerHTML = '';
+  output.classList.remove('animation');
+  void output.offsetWidth; // Trigger reflow to restart animation
+  output.innerHTML = convertedText;
+  output.classList.add('animation');
+}
+</script>
+</body>
+</html>
