@@ -1,108 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Binary Converter</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    text-align: center;
-  }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Binary Converter</title>
+    <style>
+      *{
+        margin: 0%;
+        padding: 0%;
+        box-sizing: border-box;
+        color: black;
+        font-family:glory;
+      }
+      html,body{
+          height: 100%;
+          width: 100%;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background-image: url(https://images.unsplash.com/photo-1719306883356-1b4ee90e0420?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+      }
 
-  h1 {
-    color: #333;
-  }
+      h1 {
+        color: transparent;
+        font-size: 40px;
+        font-weight: 800;
+      }
 
-  .container {
-    margin-top: 50px;
-  }
+      .container {
+        margin-top: 50px;
+        -webkit-text-stroke: 2px white;
+        stroke: 2px white;
+        justify-content: center;
+        align-items: center;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        width: 500px;
+        height: 300px;
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+        color: transparent;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        margin: 0 auto;
+        font-size: 50px;
+      }
 
-  input[type="text"] {
-    width: 300px;
-    padding: 10px;
-    margin: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-  }
+      input[type="text"] {
+        background: transparent;
+        width: 300px;
+        padding: 20px;
+        color: black;
+        margin: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 26px;
+      }
 
-  button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #4CAF50;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-  }
+      button {
+        padding: 10px 20px;
+        border: none;
+        background: transparent;
+        color: rgb(0, 0, 0);
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        border: 1px solid white;
+        transition: 0.3s ease;
+      }
 
-  button:hover {
-    background-color: #45a049;
-  }
+      button:hover {
+        background: transparent;
+      }
 
-  #output {
-    margin-top: 20px;
-    font-size: 18px;
-  }
+      #output {
+        margin-top: 20px;
+        font-size: 18px;
+      }
 
-  .animation {
-    animation: slideIn 0.5s ease;
-  }
+      .animation {
+        animation: slideIn 0.5s ease;
+      }
 
-  @keyframes slideIn {
-    0% {
-      opacity: 0;
-      transform: translateY(-50px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-</style>
-</head>
-<body>
-<h1>Binary Converter</h1>
-<div class="container">
-  <input type="text" id="input" placeholder="Enter binary or text">
-  <br>
-  <button onclick="convert()">Convert</button>
-  <br>
-  <div id="output"></div>
-</div>
+      @keyframes slideIn {
+        0% {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Binary Converter</h1>
+      <input type="text" id="input" placeholder="Enter binary or text" />
+      <br />
+      <button onclick="convert()">Convert</button>
+      <br />
+      <div id="output"></div>
+    </div>
 
-<script>
-function convert() {
-  var input = document.getElementById('input').value.trim();
-  var output = document.getElementById('output');
-  var convertedText = '';
+    <script>
+      function convert() {
+        var input = document.getElementById("input").value.trim();
+        var output = document.getElementById("output");
+        var convertedText = "";
 
-  // Check if input is binary or text
-  if (/^[01\s]+$/.test(input)) {
-    // Convert binary to text
-    var words = input.split(' ');
-    for (var i = 0; i < words.length; i++) {
-      var charCode = parseInt(words[i], 2);
-      convertedText += String.fromCharCode(charCode);
-    }
-  } else {
-    // Convert text to binary
-    for (var i = 0; i < input.length; i++) {
-      var binaryChar = input[i].charCodeAt(0).toString(2);
-      convertedText += binaryChar.padStart(8, '0') + ' ';
-    }
-  }
+        // Check if input is binary or text
+        if (/^[01\s]+$/.test(input)) {
+          // Convert binary to text
+          var words = input.split(" ");
+          for (var i = 0; i < words.length; i++) {
+            var charCode = parseInt(words[i], 2);
+            convertedText += String.fromCharCode(charCode);
+          }
+        } else {
+          // Convert text to binary
+          for (var i = 0; i < input.length; i++) {
+            var binaryChar = input[i].charCodeAt(0).toString(2);
+            convertedText += binaryChar.padStart(8, "0") + " ";
+          }
+        }
 
-  // Display the result with animation
-  output.innerHTML = '';
-  output.classList.remove('animation');
-  void output.offsetWidth; // Trigger reflow to restart animation
-  output.innerHTML = convertedText;
-  output.classList.add('animation');
-}
-</script>
-</body>
+        // Display the result with animation
+        output.innerHTML = "";
+        output.classList.remove("animation");
+        void output.offsetWidth; // Trigger reflow to restart animation
+        output.innerHTML = convertedText;
+        output.classList.add("animation");
+      }
+    </script>
+  </body>
 </html>
