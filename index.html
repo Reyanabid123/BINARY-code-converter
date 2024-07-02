@@ -21,7 +21,6 @@
             stroke: 2px white;
             justify-content: center;
             align-items: center;
-            display: flex;
             top: 50%;
             left: 50%;
             position: absolute;
@@ -51,16 +50,19 @@
   button {
     padding: 10px 20px;
     border: none;
-    background-color: #4CAF50;
+    background-color: transparent;
     color: white;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
+    boder:2px solid white;
   }
 
   button:hover {
-    background-color: #45a049;
+    background-color: transparent;
+    boder:2px solid white;
+    
   }
 
   #output {
@@ -85,8 +87,9 @@
 </style>
 </head>
 <body>
-<h1>Binary Converter</h1>
+
 <div class="container">
+  <h1>Binary Converter</h1>
   <input type="text" id="input" placeholder="Enter binary or text">
   <br>
   <button onclick="convert()">Convert</button>
